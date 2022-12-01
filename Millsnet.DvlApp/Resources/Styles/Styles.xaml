@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <!-- Glyphs -->
+        <ResourceDictionary>
+            <x:String x:Key="glyph-car">&#xEE1F;</x:String>
+            <x:String x:Key="glyph-home">&#xEC5E;</x:String>
+            <x:String x:Key="glyph-shirt">&#xEDAF;</x:String>
+            <x:String x:Key="glyph-camera">&#xEECE;</x:String>
+            <x:String x:Key="glyph-add">&#xEFC2;</x:String>
+            <x:String x:Key="glyph-save">&#xEE00;</x:String>
+            <x:String x:Key="glyph-delete">&#xEE09;</x:String>
+            <x:String x:Key="glyph-edit">&#xEBF6;</x:String>
+            <x:String x:Key="glyph-cog">&#xEF3A;</x:String>
+            <x:String x:Key="glyph-hanger">&#xEF42;</x:String>
+            <x:String x:Key="glyph-all">&#xEF5D;</x:String>
+            <x:String x:Key="glyph-move">&#xEF0A;</x:String>
+            <x:String x:Key="glyph-globe">&#xEF0E;</x:String>
+            <x:String x:Key="glyph-history">&#xEF46;</x:String>
+            <x:String x:Key="glyph-info">&#xEF4E;</x:String>
+            <x:String x:Key="glyph-random">&#xEFCF;</x:String>
+            <x:String x:Key="glyph-gmap">&#xED42;</x:String>
+            <x:String x:Key="glyph-wikipedia">&#xE958;</x:String>
+            <x:String x:Key="glyph-bluetooth">&#xEC42;</x:String>
+            <x:String x:Key="glyph-cross">&#xEC4F;</x:String>
+            <x:String x:Key="glyph-check">&#xF021;</x:String>
+            <x:String x:Key="glyph-refresh">&#xEFD1;</x:String>
+            <x:String x:Key="glyph-router">&#xEA56;</x:String>
+            <x:String x:Key="glyph-exit">&#xEF1D;</x:String>
+            <x:String x:Key="glyph-user">&#xEC8E;</x:String>
+            <x:String x:Key="glyph-injection">&#xEC24;</x:String>
+        </ResourceDictionary>
+        <!-- END of Glyphs -->
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

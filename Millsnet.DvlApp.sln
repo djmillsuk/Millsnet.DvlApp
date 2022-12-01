@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31611.283
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Millsnet.DvlApp", "Millsnet.DvlApp\Millsnet.DvlApp.csproj", "{131B6265-A323-432C-B143-627A5DB21249}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Millsnet.DvlApp.Views", "Millsnet.DvlApp.Views\Millsnet.DvlApp.Views.csproj", "{575A031B-4212-4C21-B6C5-1A5D826A907D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Millsnet.DvlApp.ViewModels", "Millsnet.DvlApp.ViewModels\Millsnet.DvlApp.ViewModels.csproj", "{D5B1E913-390D-4749-8D48-E72346901215}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Millsnet.DvlApp.Models", "Millsnet.DvlApp.Models\Millsnet.DvlApp.Models.csproj", "{E61D67F9-7CE2-463B-98C3-A75BC0FE7959}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Millsnet.DvlApp.Interfaces", "Millsnet.DvlApp.Interfaces\Millsnet.DvlApp.Interfaces.csproj", "{9538886F-E566-458B-95BA-7D16D0193DAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Millsnet.DvlApp.Services", "Millsnet.DvlApp.Services\Millsnet.DvlApp.Services.csproj", "{49A222BF-7849-4342-9086-DB1C31914F87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{131B6265-A323-432C-B143-627A5DB21249}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{131B6265-A323-432C-B143-627A5DB21249}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{131B6265-A323-432C-B143-627A5DB21249}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{131B6265-A323-432C-B143-627A5DB21249}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{131B6265-A323-432C-B143-627A5DB21249}.Release|Any CPU.Build.0 = Release|Any CPU
+		{131B6265-A323-432C-B143-627A5DB21249}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{575A031B-4212-4C21-B6C5-1A5D826A907D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{575A031B-4212-4C21-B6C5-1A5D826A907D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{575A031B-4212-4C21-B6C5-1A5D826A907D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{575A031B-4212-4C21-B6C5-1A5D826A907D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5B1E913-390D-4749-8D48-E72346901215}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5B1E913-390D-4749-8D48-E72346901215}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5B1E913-390D-4749-8D48-E72346901215}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5B1E913-390D-4749-8D48-E72346901215}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E61D67F9-7CE2-463B-98C3-A75BC0FE7959}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E61D67F9-7CE2-463B-98C3-A75BC0FE7959}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E61D67F9-7CE2-463B-98C3-A75BC0FE7959}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E61D67F9-7CE2-463B-98C3-A75BC0FE7959}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9538886F-E566-458B-95BA-7D16D0193DAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9538886F-E566-458B-95BA-7D16D0193DAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9538886F-E566-458B-95BA-7D16D0193DAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9538886F-E566-458B-95BA-7D16D0193DAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49A222BF-7849-4342-9086-DB1C31914F87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49A222BF-7849-4342-9086-DB1C31914F87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49A222BF-7849-4342-9086-DB1C31914F87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49A222BF-7849-4342-9086-DB1C31914F87}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
+	EndGlobalSection
+EndGlobal

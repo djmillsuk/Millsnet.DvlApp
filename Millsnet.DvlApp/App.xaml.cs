@@ -1,0 +1,11 @@
+﻿namespace Millsnet.DvlApp;
+
+public partial class App : Application
+{
+	public App()
+	{
+		InitializeComponent();
+
+		MainPage = new AppShell();
+	}
+}

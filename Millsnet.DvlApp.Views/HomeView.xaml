@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Millsnet.DvlApp.Views.HomeView"
+             xmlns:vm="clr-namespace:Millsnet.DvlApp.ViewModels;assembly=Millsnet.DvlApp.ViewModels"
+             x:Name="_this"
+             Title="Home">
+    <ContentPage.BindingContext>
+        <vm:HomeViewModel/>
+    </ContentPage.BindingContext>
+    <VerticalStackLayout>
+        <Grid ColumnDefinitions="*,*,*,*,50">
+            <Label Text="Registration" VerticalOptions="Center"/>
+            <Label Text="MOT Expires" VerticalOptions="Center" Grid.Column="1"/>
+            <Label Text="MOT Status" VerticalOptions="Center" Grid.Column="2"/>
+            <Label Text="Last Checked" VerticalOptions="Center" Grid.Column="3"/>
+            <Button Text="{StaticResource glyph-add}" FontFamily="icofont" Command="{Binding AddVehicleCommand}" WidthRequest="50" Grid.Column="4"/>
+        </Grid>
+        <VerticalStackLayout BindableLayout.ItemsSource="{Binding Vehicles}">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="*,*,*,*,50">
+                        <Label Text="{Binding RegistrationNumber}"/>
+                        <Label Text="{Binding MotExpiryDate}" Grid.Column="1"/>
+                        <Label Text="{Binding MotStatus}" Grid.Column="2"/>
+                        <Label Text="{Binding LastChecked}" Grid.Column="3"/>
+                        <Button Text="{StaticResource glyph-refresh}" FontFamily="icofont" Command="{Binding Path=BindingContext.RefreshVehicleCommand, Source={x:Reference _this}}" CommandParameter="{Binding .}" WidthRequest="50" Grid.Column="4"/>
+                    </Grid>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
