@@ -8,25 +8,31 @@
     <ContentPage.BindingContext>
         <vm:HomeViewModel/>
     </ContentPage.BindingContext>
-    <VerticalStackLayout>
-        <Grid ColumnDefinitions="*,*,*,*,50,50">
-            <Label Text="Registration"
+    <VerticalStackLayout BackgroundColor="LightGray">
+        <StackLayout Grid.Column="3" Orientation="Horizontal" HorizontalOptions="End">
+            <Button Text="{StaticResource glyph-refresh}" FontFamily="icofont" Command="{Binding RefreshVehiclesCommand}" WidthRequest="50" Grid.Column="4"/>
+            <Button Text="{StaticResource glyph-delete}" FontFamily="icofont" Command="{Binding DeleteVehiclesCommand}" WidthRequest="50" Grid.Column="5"/>
+            <Button Text="{StaticResource glyph-add}" FontFamily="icofont" Command="{Binding AddVehicleCommand}" WidthRequest="50" Grid.Column="6"/>
+        </StackLayout>
+        <Grid ColumnDefinitions="*,*,*,*">
+            <Label Text="Reg"
+                   FontAttributes="Bold"
                                VerticalOptions="Center"
                                FontSize="Medium" />
-            <Label Text="MOT Expires"
+            <Label Text="MOT End"
+                   FontAttributes="Bold"
                                FontSize="Medium" VerticalOptions="Center" Grid.Column="1"/>
-            <Label Text="MOT Status"
+            <Label Text="Status"
+                   FontAttributes="Bold"
                                FontSize="Medium" VerticalOptions="Center" Grid.Column="2"/>
-            <Label Text="Last Checked"
+            <Label Text="Checked"
+                   FontAttributes="Bold"
                                FontSize="Medium" VerticalOptions="Center" Grid.Column="3"/>
-            <Button Text="{StaticResource glyph-refresh}" FontFamily="icofont" Command="{Binding RefreshVehiclesCommand}" WidthRequest="50" Grid.Column="4"/>
-            <Button Text="{StaticResource glyph-delete}" FontFamily="icofont" Command="{Binding DeleteVehiclesCommand}" WidthRequest="50" Grid.Column="4"/>
-            <Button Text="{StaticResource glyph-add}" FontFamily="icofont" Command="{Binding AddVehicleCommand}" WidthRequest="50" Grid.Column="5"/>
         </Grid>
         <VerticalStackLayout BindableLayout.ItemsSource="{Binding Vehicles}">
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
-                    <Grid ColumnDefinitions="*,*,*,*,50" 
+                    <Grid ColumnDefinitions="*,*,*,*" 
                          BackgroundColor="{Binding IsSelected, Converter={StaticResource SelectedToBackgroundColourConverter}}" >
                         <Button Command="{Binding ToggleSelectCommand}"
                             BackgroundColor="Transparent" 
