@@ -9,22 +9,54 @@
         <vm:HomeViewModel/>
     </ContentPage.BindingContext>
     <VerticalStackLayout>
-        <Grid ColumnDefinitions="*,*,*,*,50">
-            <Label Text="Registration" VerticalOptions="Center"/>
-            <Label Text="MOT Expires" VerticalOptions="Center" Grid.Column="1"/>
-            <Label Text="MOT Status" VerticalOptions="Center" Grid.Column="2"/>
-            <Label Text="Last Checked" VerticalOptions="Center" Grid.Column="3"/>
-            <Button Text="{StaticResource glyph-add}" FontFamily="icofont" Command="{Binding AddVehicleCommand}" WidthRequest="50" Grid.Column="4"/>
+        <Grid ColumnDefinitions="*,*,*,*,50,50">
+            <Label Text="Registration"
+                               VerticalOptions="Center"
+                               FontSize="Medium" />
+            <Label Text="MOT Expires"
+                               FontSize="Medium" VerticalOptions="Center" Grid.Column="1"/>
+            <Label Text="MOT Status"
+                               FontSize="Medium" VerticalOptions="Center" Grid.Column="2"/>
+            <Label Text="Last Checked"
+                               FontSize="Medium" VerticalOptions="Center" Grid.Column="3"/>
+            <Button Text="{StaticResource glyph-refresh}" FontFamily="icofont" Command="{Binding RefreshVehiclesCommand}" WidthRequest="50" Grid.Column="4"/>
+            <Button Text="{StaticResource glyph-delete}" FontFamily="icofont" Command="{Binding DeleteVehiclesCommand}" WidthRequest="50" Grid.Column="4"/>
+            <Button Text="{StaticResource glyph-add}" FontFamily="icofont" Command="{Binding AddVehicleCommand}" WidthRequest="50" Grid.Column="5"/>
         </Grid>
         <VerticalStackLayout BindableLayout.ItemsSource="{Binding Vehicles}">
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
-                    <Grid ColumnDefinitions="*,*,*,*,50">
-                        <Label Text="{Binding RegistrationNumber}"/>
-                        <Label Text="{Binding MotExpiryDate}" Grid.Column="1"/>
-                        <Label Text="{Binding MotStatus}" Grid.Column="2"/>
-                        <Label Text="{Binding LastChecked}" Grid.Column="3"/>
-                        <Button Text="{StaticResource glyph-refresh}" FontFamily="icofont" Command="{Binding Path=BindingContext.RefreshVehicleCommand, Source={x:Reference _this}}" CommandParameter="{Binding .}" WidthRequest="50" Grid.Column="4"/>
+                    <Grid ColumnDefinitions="*,*,*,*,50" 
+                         BackgroundColor="{Binding IsSelected, Converter={StaticResource SelectedToBackgroundColourConverter}}" >
+                        <Button Command="{Binding ToggleSelectCommand}"
+                            BackgroundColor="Transparent" 
+                            Grid.ColumnSpan="5" 
+                            HorizontalOptions="Fill" 
+                            VerticalOptions="Fill"
+                                BorderColor="Transparent"/>
+                        <Label Text="{Binding RegistrationNumber}"
+                               VerticalOptions="Center"
+                               FontSize="Medium"
+                               TextColor="{Binding IsSelected, Converter={StaticResource SelectedToTextColourConverter}}"
+                               InputTransparent="true"/>
+                        <Label Text="{Binding MotExpiryDate, Converter={StaticResource DateTimeToDateConverter}}" 
+                               VerticalOptions="Center"
+                               FontSize="Medium"
+                               Grid.Column="1"
+                                InputTransparent="true"
+                               TextColor="{Binding IsSelected, Converter={StaticResource SelectedToTextColourConverter}}"/>
+                        <Label Text="{Binding MotStatus}" 
+                               VerticalOptions="Center"
+                               FontSize="Medium"
+                               Grid.Column="2"
+                                InputTransparent="true"
+                               TextColor="{Binding IsSelected, Converter={StaticResource SelectedToTextColourConverter}}"/>
+                        <Label Text="{Binding LastChecked, Converter={StaticResource DateTimeToFriendlyDateConverter}}"
+                               VerticalOptions="Center"
+                               FontSize="Medium"
+                               Grid.Column="3"
+                                InputTransparent="true"
+                               TextColor="{Binding IsSelected, Converter={StaticResource SelectedToTextColourConverter}}"/>
                     </Grid>
                 </DataTemplate>
             </BindableLayout.ItemTemplate>

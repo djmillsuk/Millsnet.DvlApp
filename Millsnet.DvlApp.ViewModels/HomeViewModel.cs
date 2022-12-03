@@ -1,4 +1,5 @@
-﻿using Millsnet.DvlApp.Interfaces;
+﻿using Millsnet.DvlApp.DisplayModels;
+using Millsnet.DvlApp.Interfaces;
 using Millsnet.DvlApp.Models;
 using System;
 using System.Collections.Generic;
@@ -15,16 +16,19 @@ namespace Millsnet.DvlApp.ViewModels
         private readonly EditVehicleViewModel _EditVehicleViewModel;
         private readonly IDataService _DataService;
         private readonly IDvlaService _DvlaService;
-        private IEnumerable<VehicleDetails> _Vehicles;
-        public IEnumerable<VehicleDetails> Vehicles { get => _Vehicles; set => SetProperty(ref _Vehicles, value); }
+        private readonly IAlertService _AlertService;
+        private ObservableCollection<VehicleDetailsDisplayModel> _Vehicles;
+        public ObservableCollection<VehicleDetailsDisplayModel> Vehicles { get => _Vehicles; set => SetProperty(ref _Vehicles, value); }
 
         public HomeViewModel() { }
-        public HomeViewModel(EditVehicleViewModel editVehicleViewModel, IDataService dataService, IDvlaService dvlaService)
+        public HomeViewModel(EditVehicleViewModel editVehicleViewModel, IDataService dataService, IDvlaService dvlaService, IAlertService alertService)
         {
+            _AlertService = alertService;
             _EditVehicleViewModel = editVehicleViewModel;
             _DataService = dataService;
             _DvlaService = dvlaService;
-            Vehicles = _DataService.Load<IEnumerable<VehicleDetails>>(nameof(VehicleDetails));
+            IEnumerable<VehicleDetails> vehicles = _DataService.Load<IEnumerable<VehicleDetails>>(nameof(VehicleDetails));
+            Vehicles = new ObservableCollection<VehicleDetailsDisplayModel>(vehicles.Select(v => new VehicleDetailsDisplayModel(v)));
         }
 
 
@@ -33,13 +37,30 @@ namespace Millsnet.DvlApp.ViewModels
             _EditVehicleViewModel.LoadVehicle(new VehicleDetails { RegistrationNumber = "N3WR3G", Model = "New Car" });
             await Shell.Current.GoToAsync("EditVehicle");
         });
-        public ICommand RefreshVehicleCommand => new Command<VehicleDetails>(async (vehicle) =>
+        public ICommand RefreshVehiclesCommand => new Command(async () =>
         {
-            VehicleDetails details = await _DvlaService.GetVehicleAsync(vehicle.RegistrationNumber);
-            List<VehicleDetails> newDetails = (_Vehicles?.ToList()??new List<VehicleDetails>()).Where(v => v.RegistrationNumber != vehicle.RegistrationNumber).ToList();
-            newDetails.Add(details);
-            Vehicles = newDetails;
-            _DataService.Save(Vehicles, nameof(VehicleDetails));
+            foreach (var vehicle in _Vehicles?.Where(v => v.IsSelected))
+            {
+                VehicleDetails details = await _DvlaService.GetVehicleAsync(vehicle.RegistrationNumber);
+                VehicleDetailsDisplayModel vehicleToUpdate = _Vehicles.First(v => v.RegistrationNumber == details.RegistrationNumber);
+                vehicleToUpdate.UpdateDetails(details);
+                _DataService.Save(Vehicles.Select(v => v.ToVehicleDetails()), nameof(VehicleDetails));
+                vehicleToUpdate.IsSelected = false;
+            }
+        });
+        public ICommand DeleteVehiclesCommand => new Command(() =>
+        {
+            _AlertService.ShowConfirmation("Confirmation", "Delete selected vehicles?", IsConfirmed =>
+            {
+                if (IsConfirmed)
+                {
+                    foreach (var v in _Vehicles.Where(v => v.IsSelected == true).ToList())
+                    {
+                        _Vehicles.Remove(v);
+                    }
+                    _DataService.Save(Vehicles.Select(v => v.ToVehicleDetails()), nameof(VehicleDetails));
+                }
+            });
         });
     }
 }

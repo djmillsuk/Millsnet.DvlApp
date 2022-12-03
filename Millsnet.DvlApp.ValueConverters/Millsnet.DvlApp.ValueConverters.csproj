@@ -17,10 +17,4 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
-	<ItemGroup>
-	  <ProjectReference Include="..\Millsnet.DvlApp.DisplayModels\Millsnet.DvlApp.DisplayModels.csproj" />
-	  <ProjectReference Include="..\Millsnet.DvlApp.Interfaces\Millsnet.DvlApp.Interfaces.csproj" />
-	  <ProjectReference Include="..\Millsnet.DvlApp.Models\Millsnet.DvlApp.Models.csproj" />
-	</ItemGroup>
-
 </Project>

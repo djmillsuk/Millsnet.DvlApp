@@ -55,6 +55,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\Millsnet.DvlApp.Interfaces\Millsnet.DvlApp.Interfaces.csproj" />
 	  <ProjectReference Include="..\Millsnet.DvlApp.Services\Millsnet.DvlApp.Services.csproj" />
+	  <ProjectReference Include="..\Millsnet.DvlApp.ValueConverters\Millsnet.DvlApp.ValueConverters.csproj" />
 	  <ProjectReference Include="..\Millsnet.DvlApp.ViewModels\Millsnet.DvlApp.ViewModels.csproj" />
 	  <ProjectReference Include="..\Millsnet.DvlApp.Views\Millsnet.DvlApp.Views.csproj" />
 	</ItemGroup>

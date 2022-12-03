@@ -7,13 +7,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Millsnet.DvlApp", "Millsnet
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Millsnet.DvlApp.Views", "Millsnet.DvlApp.Views\Millsnet.DvlApp.Views.csproj", "{575A031B-4212-4C21-B6C5-1A5D826A907D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Millsnet.DvlApp.ViewModels", "Millsnet.DvlApp.ViewModels\Millsnet.DvlApp.ViewModels.csproj", "{D5B1E913-390D-4749-8D48-E72346901215}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Millsnet.DvlApp.ViewModels", "Millsnet.DvlApp.ViewModels\Millsnet.DvlApp.ViewModels.csproj", "{D5B1E913-390D-4749-8D48-E72346901215}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Millsnet.DvlApp.Models", "Millsnet.DvlApp.Models\Millsnet.DvlApp.Models.csproj", "{E61D67F9-7CE2-463B-98C3-A75BC0FE7959}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Millsnet.DvlApp.Models", "Millsnet.DvlApp.Models\Millsnet.DvlApp.Models.csproj", "{E61D67F9-7CE2-463B-98C3-A75BC0FE7959}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Millsnet.DvlApp.Interfaces", "Millsnet.DvlApp.Interfaces\Millsnet.DvlApp.Interfaces.csproj", "{9538886F-E566-458B-95BA-7D16D0193DAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Millsnet.DvlApp.Interfaces", "Millsnet.DvlApp.Interfaces\Millsnet.DvlApp.Interfaces.csproj", "{9538886F-E566-458B-95BA-7D16D0193DAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Millsnet.DvlApp.Services", "Millsnet.DvlApp.Services\Millsnet.DvlApp.Services.csproj", "{49A222BF-7849-4342-9086-DB1C31914F87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Millsnet.DvlApp.Services", "Millsnet.DvlApp.Services\Millsnet.DvlApp.Services.csproj", "{49A222BF-7849-4342-9086-DB1C31914F87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Millsnet.DvlApp.ValueConverters", "Millsnet.DvlApp.ValueConverters\Millsnet.DvlApp.ValueConverters.csproj", "{B8228466-D500-4636-8FA0-534D0C74459E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Millsnet.DvlApp.DisplayModels", "Millsnet.DvlApp.DisplayModels\Millsnet.DvlApp.DisplayModels.csproj", "{31A6601A-52E6-4930-BA87-8A9CCB21FCFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +51,14 @@ Global
 		{49A222BF-7849-4342-9086-DB1C31914F87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49A222BF-7849-4342-9086-DB1C31914F87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49A222BF-7849-4342-9086-DB1C31914F87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8228466-D500-4636-8FA0-534D0C74459E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8228466-D500-4636-8FA0-534D0C74459E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8228466-D500-4636-8FA0-534D0C74459E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8228466-D500-4636-8FA0-534D0C74459E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31A6601A-52E6-4930-BA87-8A9CCB21FCFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31A6601A-52E6-4930-BA87-8A9CCB21FCFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31A6601A-52E6-4930-BA87-8A9CCB21FCFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31A6601A-52E6-4930-BA87-8A9CCB21FCFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
