@@ -1,4 +1,5 @@
-﻿using Millsnet.DvlApp.Interfaces;
+﻿using Millsnet.DvlApp.DisplayModels;
+using Millsnet.DvlApp.Interfaces;
 using Millsnet.DvlApp.Models;
 using System;
 using System.Collections.Generic;
@@ -13,12 +14,8 @@ namespace Millsnet.DvlApp.ViewModels
     {
         private readonly IDataService _DataService;
         private readonly IAlertService _AlertService;
-        private string _RegistrationNumber;
-        public string RegistrationNumber { get => _RegistrationNumber; set => SetProperty(ref _RegistrationNumber, value); }
-
-        private string _Model;
-
-        public string Model { get => _Model; set => SetProperty(ref _Model, value); }
+        private VehicleDetailsDisplayModel _Vehicle;
+        public VehicleDetailsDisplayModel Vehicle { get => _Vehicle; set => SetProperty(ref _Vehicle, value); }
 
         public EditVehicleViewModel() { }
         public EditVehicleViewModel(IDataService dataService, IAlertService alertService)
@@ -27,27 +24,27 @@ namespace Millsnet.DvlApp.ViewModels
             _AlertService = alertService;
         }
 
-        public void LoadVehicle(VehicleDetails vehicle) 
+        public void LoadVehicle(VehicleDetailsDisplayModel vehicle) 
         {
-            RegistrationNumber = vehicle.RegistrationNumber;
-            Model = vehicle.Model;
+            Vehicle = vehicle;
         }
 
         public ICommand SaveCommand => new Command(() =>
         {
-            List<VehicleDetails> vehicles = _DataService.Load<IEnumerable<VehicleDetails>>(nameof(VehicleDetails))?.ToList()??new List<VehicleDetails>();
-            VehicleDetails vehicle = vehicles.FirstOrDefault(v => v.RegistrationNumber == _RegistrationNumber)??new VehicleDetails 
-            {
-                RegistrationNumber = _RegistrationNumber,
-                Model = _Model
-            };
-            vehicles = vehicles.Where(v => v.RegistrationNumber != _RegistrationNumber)?.ToList();
-            vehicle.RegistrationNumber = _RegistrationNumber;
-            vehicle.Model = _Model;
-            vehicles.Add(vehicle);
-            _DataService.Save(vehicles, nameof(VehicleDetails));
+            //List<VehicleDetails> vehicles = _DataService.Load<IEnumerable<VehicleDetails>>(nameof(VehicleDetails))?.ToList()??new List<VehicleDetails>();
+            //VehicleDetails vehicle = vehicles.FirstOrDefault(v => v.RegistrationNumber == _RegistrationNumber)??new VehicleDetails 
+            //{
+            //    RegistrationNumber = _RegistrationNumber,
+            //    Model = _Model
+            //};
+            //vehicles = vehicles.Where(v => v.RegistrationNumber != _RegistrationNumber)?.ToList();
+            //vehicle.RegistrationNumber = _RegistrationNumber;
+            //vehicle.Model = _Model;
+            //vehicles.Add(vehicle);
+            //_DataService.Save(vehicles, nameof(VehicleDetails));
 
-            _AlertService.ShowAlert("Settings", "Vehicle saved");
+            //_AlertService.ShowAlert("Settings", "Vehicle saved");
+            Shell.Current.SendBackButtonPressed();
         });
     }
 }

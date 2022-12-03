@@ -3,17 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Millsnet.DvlApp.Views.HomeView"
              xmlns:vm="clr-namespace:Millsnet.DvlApp.ViewModels;assembly=Millsnet.DvlApp.ViewModels"
-             x:Name="_this"
-             Title="Home">
+             x:Name="_this">
+    <Shell.TitleView>
+        <Grid ColumnDefinitions="*,auto">
+            <Label Text="Home" Style="{StaticResource TitleBarLabelStyle}"/>
+            <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End">
+                <Button Text="{StaticResource glyph-refresh}" 
+                        Command="{Binding RefreshVehiclesCommand}" 
+                        IsVisible="{Binding VehiclesSelected}" 
+                        Style="{StaticResource TitleBarIconButtonStyle}"/>
+                <Button Text="{StaticResource glyph-edit}" 
+                        Command="{Binding EditVehicleCommand}"  
+                        IsVisible="{Binding VehiclesSelected}" 
+                        Style="{StaticResource TitleBarIconButtonStyle}"/>
+                <Button Text="{StaticResource glyph-delete}" 
+                        Command="{Binding DeleteVehiclesCommand}"  
+                        IsVisible="{Binding VehiclesSelected}" 
+                        Style="{StaticResource TitleBarIconButtonStyle}"/>
+                <Button Text="{StaticResource glyph-add}" 
+                        Command="{Binding AddVehicleCommand}"  
+                        Style="{StaticResource TitleBarIconButtonStyle}"/>
+            </StackLayout>
+        </Grid>
+    </Shell.TitleView>
     <ContentPage.BindingContext>
         <vm:HomeViewModel/>
     </ContentPage.BindingContext>
     <VerticalStackLayout BackgroundColor="LightGray">
-        <StackLayout Grid.Column="3" Orientation="Horizontal" HorizontalOptions="End">
-            <Button Text="{StaticResource glyph-refresh}" FontFamily="icofont" Command="{Binding RefreshVehiclesCommand}" WidthRequest="50" Grid.Column="4"/>
-            <Button Text="{StaticResource glyph-delete}" FontFamily="icofont" Command="{Binding DeleteVehiclesCommand}" WidthRequest="50" Grid.Column="5"/>
-            <Button Text="{StaticResource glyph-add}" FontFamily="icofont" Command="{Binding AddVehicleCommand}" WidthRequest="50" Grid.Column="6"/>
-        </StackLayout>
         <Grid ColumnDefinitions="*,*,*,*">
             <Label Text="Reg"
                    FontAttributes="Bold"

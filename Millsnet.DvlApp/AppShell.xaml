@@ -6,7 +6,11 @@
     xmlns:local="clr-namespace:Millsnet.DvlApp"
     xmlns:views="clr-namespace:Millsnet.DvlApp.Views;assembly=Millsnet.DvlApp.Views"
     Shell.FlyoutBehavior="Disabled">
-
+    <Shell.TitleView>
+        <HorizontalStackLayout>
+            <Label Text="Home"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
     <TabBar>
         <Tab Title="Home">
             <Tab.Icon>

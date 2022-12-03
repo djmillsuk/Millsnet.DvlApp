@@ -7,7 +7,7 @@
     <ContentPage.BindingContext>
         <vm:SettingsViewModel/>
     </ContentPage.BindingContext>
-    <Grid>
+    <Grid BackgroundColor="LightGray">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>

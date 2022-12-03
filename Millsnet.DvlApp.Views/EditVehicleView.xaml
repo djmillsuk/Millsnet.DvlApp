@@ -31,7 +31,7 @@
             <Entry
                 Grid.Row="0"
                 Grid.Column="1"
-                Text="{Binding RegistrationNumber,Mode=TwoWay}"/>
+                Text="{Binding Vehicle.RegistrationNumber,Mode=TwoWay}"/>
 
             <Label
                 Grid.Row="1"
@@ -41,7 +41,7 @@
             <Entry
                 Grid.Row="1"
                 Grid.Column="1"
-                Text="{Binding Model,Mode=TwoWay}"/>
+                Text="{Binding Vehicle.Model,Mode=TwoWay}"/>
             
             <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="End" Grid.Row="2" Grid.ColumnSpan="2">
                 <Button Text="Save" Command="{Binding SaveCommand}"/>
