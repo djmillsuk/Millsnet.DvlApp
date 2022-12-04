@@ -35,7 +35,14 @@
                 <DataTemplate>
                     <Grid Margin="5,5,5,0"
                          BackgroundColor="{Binding IsSelected, Converter={StaticResource SelectedToBackgroundColourConverter}}" >
-                        <Button Command="{Binding ToggleSelectCommand}"
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ToggleSelectCommand}"/>
+                        </Grid.GestureRecognizers>
+                        <Border
+                                BackgroundColor="{StaticResource Tertiary}"
+                                StrokeThickness="3"/>
+                        <Label
+                            
                                 Text="{Binding RegistrationNumber}"
                                 FontSize="Large"
                                 FontAttributes="Bold"
@@ -43,10 +50,31 @@
                                 Grid.ColumnSpan="5" 
                                 HorizontalOptions="Fill" 
                                 VerticalOptions="Fill"
-                                CornerRadius="5"
-                                BorderColor="{StaticResource Tertiary}"
-                                BorderWidth="3"
+                                HorizontalTextAlignment="Center"
                                 BackgroundColor="{StaticResource Primary}"/>
+                        <Border Stroke="{StaticResource TertiaryGreen}" HorizontalOptions="End" 
+                            Margin="5" Padding="5" BackgroundColor="{StaticResource PrimaryGreen}">
+                            <VerticalStackLayout>
+                                <Label
+                                Margin="1"
+                                Text="MOT"
+                                FontSize="Medium"
+                                FontAttributes="Bold"
+                                TextColor="{Binding IsSelected, Converter={StaticResource SelectedToTextColourConverter}}"
+                                HorizontalOptions="Center" 
+                                VerticalOptions="Center"
+                                HorizontalTextAlignment="Center"/>
+                                <Label
+                                Margin="1"
+                                Text="{Binding MotStatus}"
+                                FontSize="Medium"
+                                FontAttributes="Bold"
+                                TextColor="{Binding IsSelected, Converter={StaticResource SelectedToTextColourConverter}}"
+                                HorizontalOptions="Center" 
+                                VerticalOptions="Center"
+                                HorizontalTextAlignment="Center"/>
+                            </VerticalStackLayout>
+                        </Border>
                     </Grid>
                 </DataTemplate>
             </BindableLayout.ItemTemplate>
