@@ -5,14 +5,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <Style TargetType="Label" x:Key="TitleBarLabelStyle" BasedOn="{StaticResource BaseLabelStyle}">
-        <Setter Property="TextColor" Value="{DynamicResource White}" />
+        <Setter Property="TextColor" Value="{DynamicResource Black}" />
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="HorizontalOptions" Value="Start" />
         <Setter Property="Margin" Value="10,0,0,0" />
+        <Setter Property="FontAttributes" Value="Bold" />
     </Style>
     
     <Style TargetType="Button" x:Key="TitleBarButtonStyle">
-        <Setter Property="TextColor" Value="{DynamicResource Primary}" />
+        <Setter Property="TextColor" Value="{DynamicResource Black}" />
         <Setter Property="BackgroundColor" Value="{DynamicResource White}" />
     </Style>
     

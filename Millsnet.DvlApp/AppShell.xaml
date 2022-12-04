@@ -8,7 +8,7 @@
     Shell.FlyoutBehavior="Disabled">
     <Shell.TitleView>
         <HorizontalStackLayout>
-            <Label Text="Home"/>
+            <Label Text="Home" FontAttributes="Bold"/>
         </HorizontalStackLayout>
     </Shell.TitleView>
     <TabBar>
