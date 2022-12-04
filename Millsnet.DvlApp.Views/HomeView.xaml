@@ -56,16 +56,14 @@
                             Margin="5" Padding="5" BackgroundColor="{StaticResource PrimaryGreen}">
                             <VerticalStackLayout>
                                 <Label
-                                Margin="1"
                                 Text="MOT"
-                                FontSize="Medium"
+                                FontSize="Small"
                                 FontAttributes="Bold"
                                 TextColor="{Binding IsSelected, Converter={StaticResource SelectedToTextColourConverter}}"
                                 HorizontalOptions="Center" 
                                 VerticalOptions="Center"
                                 HorizontalTextAlignment="Center"/>
                                 <Label
-                                Margin="1"
                                 Text="{Binding MotStatus}"
                                 FontSize="Medium"
                                 FontAttributes="Bold"
