@@ -11,6 +11,10 @@
         <Setter Property="Margin" Value="10,0,0,0" />
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
+
+    <Style TargetType="Label" x:Key="IconLabelStyle" BasedOn="{StaticResource BaseLabelStyle}">
+        <Setter Property="FontFamily" Value="icofont"/>
+    </Style>
     
     <Style TargetType="Button" x:Key="TitleBarButtonStyle">
         <Setter Property="TextColor" Value="{DynamicResource Black}" />
@@ -48,13 +52,17 @@
             <x:String x:Key="glyph-gmap">&#xED42;</x:String>
             <x:String x:Key="glyph-wikipedia">&#xE958;</x:String>
             <x:String x:Key="glyph-bluetooth">&#xEC42;</x:String>
-            <x:String x:Key="glyph-cross">&#xEC4F;</x:String>
-            <x:String x:Key="glyph-check">&#xF021;</x:String>
             <x:String x:Key="glyph-refresh">&#xEFD1;</x:String>
             <x:String x:Key="glyph-router">&#xEA56;</x:String>
             <x:String x:Key="glyph-exit">&#xEF1D;</x:String>
             <x:String x:Key="glyph-user">&#xEC8E;</x:String>
             <x:String x:Key="glyph-injection">&#xEC24;</x:String>
+            <x:String x:Key="glyph-circlecheck">&#xEED7;</x:String>
+            <x:String x:Key="glyph-squarecheck">&#xEED9;</x:String>
+            <x:String x:Key="glyph-check">&#xEED6;</x:String>
+            <x:String x:Key="glyph-circlecross">&#xEEDD;</x:String>
+            <x:String x:Key="glyph-squarecross">&#xEEE2;</x:String>
+            <x:String x:Key="glyph-cross">&#xEEE1;</x:String>
         </ResourceDictionary>
         <!-- END of Glyphs -->
     </ResourceDictionary.MergedDictionaries>

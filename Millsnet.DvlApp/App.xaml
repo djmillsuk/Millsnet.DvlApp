@@ -13,6 +13,66 @@
                 <ResourceDictionary Source="Resources/Styles/Icons.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
+            <converters:StringConverter x:Key="MOTStatusToIconConverter">
+                <converters:StringConverter.SourceValues>
+                    <x:String>
+                        No details held by DVLA
+                    </x:String>
+                    <x:String>
+                        No results returned
+                    </x:String>
+                    <x:String>
+                        Not valid
+                    </x:String>
+                    <x:String>
+                        Valid
+                    </x:String>
+                </converters:StringConverter.SourceValues>
+                <converters:StringConverter.TargetValues>
+                    <x:String>
+                        &#xEFCC;
+                    </x:String>
+                    <x:String>
+                        &#xEFCC;
+                    </x:String>
+                    <x:String>
+                        &#xEEE1;
+                    </x:String>
+                    <x:String>
+                        &#xEED6;
+                    </x:String>
+                </converters:StringConverter.TargetValues>
+            </converters:StringConverter>
+            <converters:StringConverter x:Key="TaxStatusToIconConverter">
+                <converters:StringConverter.SourceValues>
+                    <x:String>
+                        Not Taxed for on Road Use
+                    </x:String>
+                    <x:String>
+                        SORN
+                    </x:String>
+                    <x:String>
+                        Untaxed
+                    </x:String>
+                    <x:String>
+                        Taxed
+                    </x:String>
+                </converters:StringConverter.SourceValues>
+                <converters:StringConverter.TargetValues>
+                    <x:String>
+                        &#xEFCC;
+                    </x:String>
+                    <x:String>
+                        &#xEFCC;
+                    </x:String>
+                    <x:String>
+                        &#xEEE1;
+                    </x:String>
+                    <x:String>
+                        &#xEED6;
+                    </x:String>
+                </converters:StringConverter.TargetValues>
+            </converters:StringConverter>
             <converters:BoolConverter x:Key="SelectedToBackgroundColourConverter" x:TypeArguments="Color" TrueValue="{StaticResource Primary}" FalseValue="Transparent"/>
             <converters:BoolConverter x:Key="SelectedToTextColourConverter" x:TypeArguments="Color" TrueValue="{StaticResource White}" FalseValue="{StaticResource Black}"/>
             <converters:DateTimeToStringConverter ResultType="DateOnly" x:Key="DateTimeToDateConverter"/>

@@ -33,27 +33,30 @@
         <VerticalStackLayout BindableLayout.ItemsSource="{Binding Vehicles}">
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
-                    <Grid Margin="5,5,5,0"
-                         BackgroundColor="{Binding IsSelected, Converter={StaticResource SelectedToBackgroundColourConverter}}" >
+                    <Grid Margin="5,5,5,0" >
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ToggleSelectCommand}"/>
                         </Grid.GestureRecognizers>
-                        <Border
-                                BackgroundColor="{StaticResource Tertiary}"
-                                StrokeThickness="3"/>
+                        <RoundRectangle Stroke="{StaticResource Tertiary}" 
+                                        CornerRadius="5"
+                                Fill="{StaticResource PrimaryGradient}"
+                                StrokeThickness="0"/>
                         <Label
-                            
                                 Text="{Binding RegistrationNumber}"
                                 FontSize="Large"
                                 FontAttributes="Bold"
                                 TextColor="{Binding IsSelected, Converter={StaticResource SelectedToTextColourConverter}}"
-                                Grid.ColumnSpan="5" 
                                 HorizontalOptions="Fill" 
-                                VerticalOptions="Fill"
+                                VerticalOptions="Center"
                                 HorizontalTextAlignment="Center"
-                                BackgroundColor="{StaticResource Primary}"/>
-                        <Border Stroke="{StaticResource TertiaryGreen}" HorizontalOptions="End" 
-                            Margin="5" Padding="5" BackgroundColor="{StaticResource PrimaryGreen}">
+                            VerticalTextAlignment="Center"
+                            Margin="0,-5,0,0"/>
+                        <Grid HorizontalOptions="End" WidthRequest="60"
+                            Margin="5" Padding="5">
+                            <RoundRectangle Stroke="{StaticResource Tertiary}" 
+                                            CornerRadius="4"
+                                            Fill="{StaticResource PrimaryGreenGradient}"
+                                            StrokeThickness="0"/>
                             <VerticalStackLayout>
                                 <Label
                                 Text="MOT"
@@ -64,15 +67,42 @@
                                 VerticalOptions="Center"
                                 HorizontalTextAlignment="Center"/>
                                 <Label
-                                Text="{Binding MotStatus}"
+                                Text="{Binding MotStatus,Converter={StaticResource MOTStatusToIconConverter}}"
                                 FontSize="Medium"
                                 FontAttributes="Bold"
                                 TextColor="{Binding IsSelected, Converter={StaticResource SelectedToTextColourConverter}}"
                                 HorizontalOptions="Center" 
                                 VerticalOptions="Center"
-                                HorizontalTextAlignment="Center"/>
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource IconLabelStyle}"/>
                             </VerticalStackLayout>
-                        </Border>
+                        </Grid>
+                        <Grid HorizontalOptions="Start" WidthRequest="60"
+                            Margin="5" Padding="5">
+                            <RoundRectangle Stroke="{StaticResource Tertiary}" 
+                                            CornerRadius="4"
+                                            Fill="{StaticResource PrimaryGreenGradient}"
+                                            StrokeThickness="0"/>
+                            <VerticalStackLayout>
+                                <Label
+                                Text="TAX"
+                                FontSize="Small"
+                                FontAttributes="Bold"
+                                TextColor="{Binding IsSelected, Converter={StaticResource SelectedToTextColourConverter}}"
+                                HorizontalOptions="Center" 
+                                VerticalOptions="Center"
+                                HorizontalTextAlignment="Center"/>
+                                <Label
+                                Text="{Binding TaxStatus,Converter={StaticResource TaxStatusToIconConverter}}"
+                                FontSize="Medium"
+                                FontAttributes="Bold"
+                                TextColor="{Binding IsSelected, Converter={StaticResource SelectedToTextColourConverter}}"
+                                HorizontalOptions="Center" 
+                                VerticalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource IconLabelStyle}"/>
+                            </VerticalStackLayout>
+                        </Grid>
                     </Grid>
                 </DataTemplate>
             </BindableLayout.ItemTemplate>
