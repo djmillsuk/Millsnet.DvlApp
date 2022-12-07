@@ -20,28 +20,26 @@
                         Command="{Binding DeleteVehiclesCommand}"  
                         IsVisible="{Binding VehiclesSelected}" 
                         Style="{StaticResource TitleBarIconButtonStyle}"/>
-                <Button Text="{StaticResource glyph-add}" 
-                        Command="{Binding AddVehicleCommand}"  
-                        Style="{StaticResource TitleBarIconButtonStyle}"/>
             </StackLayout>
         </Grid>
     </Shell.TitleView>
     <ContentPage.BindingContext>
         <vm:HomeViewModel/>
     </ContentPage.BindingContext>
-    <VerticalStackLayout BackgroundColor="LightGray">
-        <VerticalStackLayout BindableLayout.ItemsSource="{Binding Vehicles}">
-            <BindableLayout.ItemTemplate>
-                <DataTemplate>
-                    <Grid Margin="5,5,5,0" >
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ToggleSelectCommand}"/>
-                        </Grid.GestureRecognizers>
-                        <RoundRectangle Stroke="{StaticResource Tertiary}" 
+    <Grid>
+        <VerticalStackLayout BackgroundColor="LightGray">
+            <VerticalStackLayout BindableLayout.ItemsSource="{Binding Vehicles}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="5,5,5,0" >
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ToggleSelectCommand}"/>
+                            </Grid.GestureRecognizers>
+                            <RoundRectangle Stroke="{StaticResource Tertiary}" 
                                         CornerRadius="5"
                                 Fill="{StaticResource PrimaryGradient}"
                                 StrokeThickness="0"/>
-                        <Label
+                            <Label
                                 Text="{Binding RegistrationNumber}"
                                 FontSize="Large"
                                 FontAttributes="Bold"
@@ -51,14 +49,14 @@
                                 HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Center"
                             Margin="0,-5,0,0"/>
-                        <Grid HorizontalOptions="End" WidthRequest="60"
+                            <Grid HorizontalOptions="End" WidthRequest="60"
                             Margin="5" Padding="5">
-                            <RoundRectangle Stroke="{StaticResource Tertiary}" 
+                                <RoundRectangle Stroke="{StaticResource Tertiary}" 
                                             CornerRadius="4"
                                             Fill="{StaticResource PrimaryGreenGradient}"
                                             StrokeThickness="0"/>
-                            <VerticalStackLayout>
-                                <Label
+                                <VerticalStackLayout>
+                                    <Label
                                 Text="MOT"
                                 FontSize="Small"
                                 FontAttributes="Bold"
@@ -66,7 +64,7 @@
                                 HorizontalOptions="Center" 
                                 VerticalOptions="Center"
                                 HorizontalTextAlignment="Center"/>
-                                <Label
+                                    <Label
                                 Text="{Binding MotStatus,Converter={StaticResource MOTStatusToIconConverter}}"
                                 FontSize="Medium"
                                 FontAttributes="Bold"
@@ -75,16 +73,16 @@
                                 VerticalOptions="Center"
                                 HorizontalTextAlignment="Center"
                                 Style="{StaticResource IconLabelStyle}"/>
-                            </VerticalStackLayout>
-                        </Grid>
-                        <Grid HorizontalOptions="Start" WidthRequest="60"
+                                </VerticalStackLayout>
+                            </Grid>
+                            <Grid HorizontalOptions="Start" WidthRequest="60"
                             Margin="5" Padding="5">
-                            <RoundRectangle Stroke="{StaticResource Tertiary}" 
+                                <RoundRectangle Stroke="{StaticResource Tertiary}" 
                                             CornerRadius="4"
                                             Fill="{StaticResource PrimaryGreenGradient}"
                                             StrokeThickness="0"/>
-                            <VerticalStackLayout>
-                                <Label
+                                <VerticalStackLayout>
+                                    <Label
                                 Text="TAX"
                                 FontSize="Small"
                                 FontAttributes="Bold"
@@ -92,7 +90,7 @@
                                 HorizontalOptions="Center" 
                                 VerticalOptions="Center"
                                 HorizontalTextAlignment="Center"/>
-                                <Label
+                                    <Label
                                 Text="{Binding TaxStatus,Converter={StaticResource TaxStatusToIconConverter}}"
                                 FontSize="Medium"
                                 FontAttributes="Bold"
@@ -101,14 +99,19 @@
                                 VerticalOptions="Center"
                                 HorizontalTextAlignment="Center"
                                 Style="{StaticResource IconLabelStyle}"/>
-                            </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                </DataTemplate>
-            </BindableLayout.ItemTemplate>
-        </VerticalStackLayout>
-        <Button Text="{StaticResource glyph-add}" 
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+            <Button Text="{StaticResource glyph-add}" 
                         Command="{Binding AddVehicleCommand}"  
                         Style="{StaticResource TitleBarIconButtonStyle}"/>
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+        <Grid BackgroundColor="{StaticResource Black}" Opacity="0.5" InputTransparent="False" IsVisible="{Binding IsBusy}"/>
+        <ActivityIndicator IsRunning="{Binding IsBusy}"
+                   Color="{StaticResource Primary}" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="50" WidthRequest="50" />
+
+    </Grid>
 </ContentPage>

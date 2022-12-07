@@ -27,5 +27,4 @@
                           ContentTemplate="{DataTemplate views:SettingsView}"/>
         </Tab>
     </TabBar>
-
 </Shell>

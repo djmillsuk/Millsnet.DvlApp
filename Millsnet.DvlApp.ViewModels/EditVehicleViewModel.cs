@@ -31,6 +31,13 @@ namespace Millsnet.DvlApp.ViewModels
 
         public ICommand SaveCommand => new Command(() =>
         {
+            Task.Run(async () =>
+            {
+                IsBusy = true;
+                await Task.Delay(1000);
+                IsBusy = false;
+                await Shell.Current.Navigation.PopModalAsync();
+            });
             //List<VehicleDetails> vehicles = _DataService.Load<IEnumerable<VehicleDetails>>(nameof(VehicleDetails))?.ToList()??new List<VehicleDetails>();
             //VehicleDetails vehicle = vehicles.FirstOrDefault(v => v.RegistrationNumber == _RegistrationNumber)??new VehicleDetails 
             //{
@@ -44,7 +51,6 @@ namespace Millsnet.DvlApp.ViewModels
             //_DataService.Save(vehicles, nameof(VehicleDetails));
 
             //_AlertService.ShowAlert("Settings", "Vehicle saved");
-            Shell.Current.SendBackButtonPressed();
         });
     }
 }

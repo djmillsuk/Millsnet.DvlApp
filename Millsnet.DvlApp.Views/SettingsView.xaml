@@ -7,32 +7,36 @@
     <ContentPage.BindingContext>
         <vm:SettingsViewModel/>
     </ContentPage.BindingContext>
-    <Grid BackgroundColor="LightGray">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Label 
-            Text="Welcome to Settings!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Grid ColumnDefinitions="auto,*" Grid.Row="1">
+    <Grid>
+        <Grid BackgroundColor="LightGray">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Label
+            <Label 
+            Text="Welcome to Settings!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+            <Grid ColumnDefinitions="auto,*" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label
                 Grid.Row="0"
                 Grid.Column="0"
                 Margin="20,0,20,0"
                 Text="Api Key" VerticalOptions="Center"/>
-            <Entry
+                <Entry
                 Grid.Row="0"
                 Grid.Column="1"
                 Text="{Binding ApiKey,Mode=TwoWay}"/>
-            <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="End" Grid.Row="1" Grid.ColumnSpan="2">
-                <Button Text="Save" Command="{Binding SaveCommand}"/>
-            </StackLayout>
+                <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="End" Grid.Row="1" Grid.ColumnSpan="2">
+                    <Button Text="Save" Command="{Binding SaveCommand}"/>
+                </StackLayout>
+            </Grid>
         </Grid>
+        <ActivityIndicator IsRunning="{Binding IsBusy}"
+                   Color="{StaticResource Primary}" />
     </Grid>
 </ContentPage>

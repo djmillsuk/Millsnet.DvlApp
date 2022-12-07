@@ -2,50 +2,106 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Millsnet.DvlApp.Views.EditVehicleView"
-             xmlns:vm="clr-namespace:Millsnet.DvlApp.ViewModels;assembly=Millsnet.DvlApp.ViewModels"
-             Title="Settings">
+             xmlns:vm="clr-namespace:Millsnet.DvlApp.ViewModels;assembly=Millsnet.DvlApp.ViewModels">
     <ContentPage.BindingContext>
         <vm:EditVehicleViewModel/>
     </ContentPage.BindingContext>
+    <Shell.TitleView>
+        <Grid ColumnDefinitions="*,auto">
+            <Label Text="Vehicle Details" Style="{StaticResource TitleBarLabelStyle}"/>
+            <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End">
+                <Button Text="{StaticResource glyph-save}" 
+                        Command="{Binding SaveCommand}" 
+                        Style="{StaticResource TitleBarIconButtonStyle}"/>
+            </StackLayout>
+        </Grid>
+    </Shell.TitleView>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Label 
-            Text="Edit Vehicle"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Grid ColumnDefinitions="auto,*" Grid.Row="1">
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
-            <Label
-                Grid.Row="0"
-                Grid.Column="0"
-                Margin="20,0,20,0"
-                Text="Registration" VerticalOptions="Center"/>
-            <Entry
-                Grid.Row="0"
-                Grid.Column="1"
-                Text="{Binding Vehicle.RegistrationNumber,Mode=TwoWay}"/>
+            <Grid ColumnDefinitions="auto,*" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <VerticalStackLayout BindingContext="{Binding Vehicle}" HorizontalOptions="Fill" Grid.ColumnSpan="2" >
+                    <Grid Margin="5,5,5,0" >
+                        <RoundRectangle Stroke="{StaticResource Tertiary}" 
+                                        CornerRadius="5"
+                                Fill="{StaticResource PrimaryGradient}"
+                                StrokeThickness="0"/>
+                        <Label
+                                Text="{Binding RegistrationNumber}"
+                                FontSize="Large"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Fill" 
+                                VerticalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            Margin="0,-5,0,0"/>
+                        <Grid HorizontalOptions="End" WidthRequest="60"
+                            Margin="5" Padding="5">
+                            <RoundRectangle Stroke="{StaticResource Tertiary}" 
+                                            CornerRadius="4"
+                                            Fill="{StaticResource PrimaryGreenGradient}"
+                                            StrokeThickness="0"/>
+                            <VerticalStackLayout>
+                                <Label
+                                Text="MOT"
+                                FontSize="Small"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center" 
+                                VerticalOptions="Center"
+                                HorizontalTextAlignment="Center"/>
+                                <Label
+                                Text="{Binding MotStatus,Converter={StaticResource MOTStatusToIconConverter}}"
+                                FontSize="Medium"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center" 
+                                VerticalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                 TextColor="{StaticResource Black}"
+                                Style="{StaticResource IconLabelStyle}"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                        <Grid HorizontalOptions="Start" WidthRequest="60"
+                            Margin="5" Padding="5">
+                            <RoundRectangle Stroke="{StaticResource Tertiary}" 
+                                            CornerRadius="4"
+                                            Fill="{StaticResource PrimaryGreenGradient}"
+                                            StrokeThickness="0"/>
+                            <VerticalStackLayout>
+                                <Label
+                                Text="TAX"
+                                FontSize="Small"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center" 
+                                VerticalOptions="Center"
+                                HorizontalTextAlignment="Center"/>
+                                <Label
+                                Text="{Binding TaxStatus,Converter={StaticResource TaxStatusToIconConverter}}"
+                                FontSize="Medium"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center" 
+                                VerticalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                 TextColor="{StaticResource Black}"
+                                Style="{StaticResource IconLabelStyle}"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Grid>
 
-            <Label
-                Grid.Row="1"
-                Grid.Column="0"
-                Margin="20,0,20,0"
-                Text="Model" VerticalOptions="Center"/>
-            <Entry
-                Grid.Row="1"
-                Grid.Column="1"
-                Text="{Binding Vehicle.Model,Mode=TwoWay}"/>
-            
-            <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="End" Grid.Row="2" Grid.ColumnSpan="2">
-                <Button Text="Save" Command="{Binding SaveCommand}"/>
-            </StackLayout>
+                </VerticalStackLayout>
+
+            </Grid>
         </Grid>
+        <Grid BackgroundColor="{StaticResource Black}" Opacity="0.5" InputTransparent="False" IsVisible="{Binding IsBusy,Mode=TwoWay}"/>
+        <ActivityIndicator IsRunning="{Binding IsBusy,Mode=TwoWay}"
+                   Color="{StaticResource Primary}" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="50" WidthRequest="50" />
+
     </Grid>
 </ContentPage>
