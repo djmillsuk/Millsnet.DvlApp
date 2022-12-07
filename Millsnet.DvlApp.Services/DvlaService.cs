@@ -8,13 +8,11 @@ namespace Millsnet.DvlApp.Services
 {
     public class DvlaService : IDvlaService
     {
-        private readonly IDataService _DataService;
         private readonly string _ApiKey;
 
-        public DvlaService(IDataService dataService)
+        public DvlaService()
         {
-            _DataService = dataService;
-            _ApiKey = _DataService.Load("ApiKey");
+            _ApiKey = "EV8AC0aJkp735WZO4rUVD3S8p6AKk0AR6HGx2o6r";
         }
         public async Task<VehicleDetails> GetVehicleAsync(string registrationNumber)
         {

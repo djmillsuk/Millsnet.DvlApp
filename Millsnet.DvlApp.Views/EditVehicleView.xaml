@@ -7,16 +7,19 @@
         <vm:EditVehicleViewModel/>
     </ContentPage.BindingContext>
     <Shell.TitleView>
-        <Grid ColumnDefinitions="*,auto">
+        <Grid ColumnDefinitions="*,auto" BackgroundColor="{StaticResource Primary}">
             <Label Text="Vehicle Details" Style="{StaticResource TitleBarLabelStyle}"/>
-            <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End">
+            <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End" BackgroundColor="{StaticResource Primary}">
+                <Button Text="{StaticResource glyph-delete}" 
+                        Command="{Binding DeleteCommand}" 
+                        Style="{StaticResource TitleBarIconButtonStyle}"/>
                 <Button Text="{StaticResource glyph-save}" 
                         Command="{Binding SaveCommand}" 
                         Style="{StaticResource TitleBarIconButtonStyle}"/>
             </StackLayout>
         </Grid>
     </Shell.TitleView>
-    <Grid>
+    <Grid  BackgroundColor="LightGray">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -29,18 +32,19 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <VerticalStackLayout BindingContext="{Binding Vehicle}" HorizontalOptions="Fill" Grid.ColumnSpan="2" >
-                    <Grid Margin="5,5,5,0" >
+                    <Grid Margin="5,5,5,0" HeightRequest="85" >
                         <RoundRectangle Stroke="{StaticResource Tertiary}" 
                                         CornerRadius="5"
                                 Fill="{StaticResource PrimaryGradient}"
                                 StrokeThickness="0"/>
-                        <Label
-                                Text="{Binding RegistrationNumber}"
-                                FontSize="Large"
-                                FontAttributes="Bold"
-                                HorizontalOptions="Fill" 
-                                VerticalOptions="Center"
-                                HorizontalTextAlignment="Center"
+                        <Entry
+                            Text="{Binding RegistrationNumber,Mode=TwoWay}"
+                            FontSize="45"
+                            TextColor="{StaticResource Black}"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Fill" 
+                            VerticalOptions="Center"
+                            HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Center"
                             Margin="0,-5,0,0"/>
                         <Grid HorizontalOptions="End" WidthRequest="60"
@@ -53,6 +57,7 @@
                                 <Label
                                 Text="MOT"
                                 FontSize="Small"
+                                TextColor="{StaticResource Black}"
                                 FontAttributes="Bold"
                                 HorizontalOptions="Center" 
                                 VerticalOptions="Center"
@@ -78,6 +83,7 @@
                                 <Label
                                 Text="TAX"
                                 FontSize="Small"
+                                TextColor="{StaticResource Black}"
                                 FontAttributes="Bold"
                                 HorizontalOptions="Center" 
                                 VerticalOptions="Center"
@@ -95,8 +101,26 @@
                         </Grid>
                     </Grid>
 
-                </VerticalStackLayout>
 
+                    <Label Text="{Binding Make, StringFormat='Make {0]'}" />
+                    <Label Text="{Binding Colour, StringFormat='Colour: {0}'}"/>
+                    <Label Text="{Binding EngineCapacity, StringFormat='Engine Capacity: {0}'}"/>
+                    <Label Text="{Binding FuelType, StringFormat='FuelType: {0}'}"/>
+                    <Label Text="{Binding ArtEndDate, StringFormat='Art End Date: {0}'}"/>
+                    <Label Text="{Binding Co2Emissions, StringFormat='Co2 Emissions: {0}'}"/>
+                    <Label Text="{Binding EuroStatus, StringFormat='Euro Status: {0}'}"/>
+                    <Label Text="{Binding MarkedForExport, StringFormat='Marked For Export: {0}'}"/>
+                    <Label Text="{Binding RealDrivingEmissions, StringFormat='Real Driving Emissions: {0}'}"/>
+                    <Label Text="{Binding RevenueWeight, StringFormat='Revenue Weight: {0}'}"/>
+                    <Label Text="{Binding MotExpiryDate, StringFormat='MOT Expiry Date: {0}'}"/>
+                    <Label Text="{Binding MotStatus, StringFormat='MOT Status: {0}'}"/>
+                    <Label Text="{Binding TaxDueDate, StringFormat='Tax Due Date: {0}'}"/>
+                    <Label Text="{Binding TypeApproval, StringFormat='Type Approval: {0}'}"/>
+                    <Label Text="{Binding Wheelplan, StringFormat='Wheelplan: {0}'}"/>
+                    <Label Text="{Binding YearOfManufacture, StringFormat='Year Of Manufacture: {0}'}"/>
+                    <Label Text="{Binding MonthOfFirstRegistration, StringFormat='Month Of First Registration: {0}'}"/>
+                    <Label Text="{Binding DateOfLastV5CIssued, StringFormat='Date Last V5C Issued: {0}'}"/>
+                </VerticalStackLayout>
             </Grid>
         </Grid>
         <Grid BackgroundColor="{StaticResource Black}" Opacity="0.5" InputTransparent="False" IsVisible="{Binding IsBusy,Mode=TwoWay}"/>

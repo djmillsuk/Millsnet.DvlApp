@@ -55,28 +55,32 @@ namespace Millsnet.DvlApp.ViewModels
             Vehicles.Add(vehicle);
             _DataService.Save(Vehicles.Select(v => v.ToVehicleDetails()), nameof(VehicleDetails));
         });
-        public ICommand EditVehicleCommand => new Command(async () =>
+        public ICommand EditVehicleCommand => new Command<VehicleDetailsDisplayModel>(
+            async (VehicleDetailsDisplayModel vehicle) =>
         {
-            VehicleDetailsDisplayModel vehicle = Vehicles.FirstOrDefault(v => v.IsSelected);
             _EditVehicleViewModel.LoadVehicle(vehicle);
             await Shell.Current.GoToAsync("EditVehicle");
         });
 
         public ICommand RefreshVehiclesCommand => new Command(async () =>
         {
-            foreach (var vehicle in _Vehicles?.Where(v => v.IsSelected))
+            IsBusy = true;
+            foreach (var vehicle in _Vehicles)
             {
                 VehicleDetails details = await _DvlaService.GetVehicleAsync(vehicle.RegistrationNumber);
                 if (details.RegistrationNumber == null)
                 {
-                    _AlertService.ShowAlert("Error","Vehicle registration is not valid or vehicle details are not found");
-                    return;
+                    _AlertService.ShowAlert("Error", $"Vehicle registration {(vehicle.RegistrationNumber)} is not valid or vehicle details are not found");
                 }
-                VehicleDetailsDisplayModel vehicleToUpdate = _Vehicles.First(v => v.RegistrationNumber == details.RegistrationNumber);
-                vehicleToUpdate.UpdateDetails(details);
-                _DataService.Save(Vehicles.Select(v => v.ToVehicleDetails()), nameof(VehicleDetails));
-                vehicleToUpdate.IsSelected = false;
+                else
+                {
+                    VehicleDetailsDisplayModel vehicleToUpdate = _Vehicles.First(v => v.RegistrationNumber == details.RegistrationNumber);
+                    vehicleToUpdate.UpdateDetails(details);
+                    _DataService.Save(Vehicles.Select(v => v.ToVehicleDetails()), nameof(VehicleDetails));
+                    vehicleToUpdate.IsSelected = false;
+                }
             }
+            IsBusy = false;
         });
         public ICommand DeleteVehiclesCommand => new Command(() =>
         {

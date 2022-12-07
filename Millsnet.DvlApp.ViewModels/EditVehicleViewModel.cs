@@ -35,8 +35,16 @@ namespace Millsnet.DvlApp.ViewModels
             {
                 IsBusy = true;
                 await Task.Delay(1000);
+
+                IEnumerable<VehicleDetails> vehicles = _DataService.Load<IEnumerable<VehicleDetails>>(nameof(VehicleDetails)) ?? new List<VehicleDetails>();
+
+                var newVehicles = vehicles.Where(v => v.RegistrationNumber != _Vehicle.RegistrationNumber).ToList();
+                newVehicles.Add(_Vehicle.ToVehicleDetails());
+
+                _DataService.Save(newVehicles, nameof(VehicleDetails));
+
                 IsBusy = false;
-                await Shell.Current.Navigation.PopModalAsync();
+                await Shell.Current.Navigation.PopAsync();
             });
             //List<VehicleDetails> vehicles = _DataService.Load<IEnumerable<VehicleDetails>>(nameof(VehicleDetails))?.ToList()??new List<VehicleDetails>();
             //VehicleDetails vehicle = vehicles.FirstOrDefault(v => v.RegistrationNumber == _RegistrationNumber)??new VehicleDetails 
@@ -51,6 +59,30 @@ namespace Millsnet.DvlApp.ViewModels
             //_DataService.Save(vehicles, nameof(VehicleDetails));
 
             //_AlertService.ShowAlert("Settings", "Vehicle saved");
+        });
+
+        public ICommand DeleteCommand => new Command(() =>
+        {
+            Task.Run(() =>
+            {
+                _AlertService.ShowConfirmation("Confirmation", "Delete this vehicle?", async (IsConfirmed) =>
+                {
+                    if (IsConfirmed)
+                    {
+                        IsBusy = true;
+
+                        IEnumerable<VehicleDetails> vehicles = _DataService.Load<IEnumerable<VehicleDetails>>(nameof(VehicleDetails)) ?? new List<VehicleDetails>();
+
+                        var newVehicles = vehicles.Where(v => v.RegistrationNumber != _Vehicle.RegistrationNumber).ToList();
+
+                        _DataService.Save(newVehicles, nameof(VehicleDetails));
+
+                        IsBusy = false;
+                        await Shell.Current.Navigation.PopAsync();
+                    }
+                });
+
+            });
         });
     }
 }

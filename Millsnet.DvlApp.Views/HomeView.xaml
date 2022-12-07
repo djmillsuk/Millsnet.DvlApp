@@ -5,20 +5,11 @@
              xmlns:vm="clr-namespace:Millsnet.DvlApp.ViewModels;assembly=Millsnet.DvlApp.ViewModels"
              x:Name="_this">
     <Shell.TitleView>
-        <Grid ColumnDefinitions="*,auto">
-            <Label Text="Home" Style="{StaticResource TitleBarLabelStyle}"/>
-            <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End">
+        <Grid ColumnDefinitions="*,auto" BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill">
+            <Label Text="Home" Style="{StaticResource TitleBarLabelStyle}" BackgroundColor="{StaticResource Primary}"/>
+            <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End"  BackgroundColor="{StaticResource Primary}">
                 <Button Text="{StaticResource glyph-refresh}" 
                         Command="{Binding RefreshVehiclesCommand}" 
-                        IsVisible="{Binding VehiclesSelected}" 
-                        Style="{StaticResource TitleBarIconButtonStyle}"/>
-                <Button Text="{StaticResource glyph-edit}" 
-                        Command="{Binding EditVehicleCommand}"  
-                        IsVisible="{Binding VehiclesSelected}" 
-                        Style="{StaticResource TitleBarIconButtonStyle}"/>
-                <Button Text="{StaticResource glyph-delete}" 
-                        Command="{Binding DeleteVehiclesCommand}"  
-                        IsVisible="{Binding VehiclesSelected}" 
                         Style="{StaticResource TitleBarIconButtonStyle}"/>
             </StackLayout>
         </Grid>
@@ -31,9 +22,11 @@
             <VerticalStackLayout BindableLayout.ItemsSource="{Binding Vehicles}">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <Grid Margin="5,5,5,0" >
+                        <Grid Margin="5,5,5,0" HeightRequest="85">
                             <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding ToggleSelectCommand}"/>
+                                <TapGestureRecognizer 
+                                    Command="{Binding Path=BindingContext.EditVehicleCommand, Source={x:Reference _this}}"
+                                    CommandParameter="{Binding .}"/>
                             </Grid.GestureRecognizers>
                             <RoundRectangle Stroke="{StaticResource Tertiary}" 
                                         CornerRadius="5"
@@ -41,7 +34,7 @@
                                 StrokeThickness="0"/>
                             <Label
                                 Text="{Binding RegistrationNumber}"
-                                FontSize="Large"
+                                FontSize="45"
                                 FontAttributes="Bold"
                                 TextColor="{Binding IsSelected, Converter={StaticResource SelectedToTextColourConverter}}"
                                 HorizontalOptions="Fill" 
