@@ -34,6 +34,25 @@ namespace Millsnet.DvlApp.ViewModels
             IEnumerable<VehicleDetails> vehicles = _DataService.Load<IEnumerable<VehicleDetails>>(nameof(VehicleDetails))??new List<VehicleDetails>();
             foreach (VehicleDetails vehicle in vehicles) 
             Vehicles.Add(new VehicleDetailsDisplayModel(vehicle));
+            Shell.Current.Navigated += Current_Navigated;
+        }
+
+        private void Current_Navigated(object sender, ShellNavigatedEventArgs e)
+        {
+            RefreshVehicles();
+        }
+
+        private void RefreshVehicles()
+        {
+            IEnumerable<VehicleDetails> vehicles = _DataService.Load<IEnumerable<VehicleDetails>>(nameof(VehicleDetails)) ?? new List<VehicleDetails>();
+            foreach (VehicleDetailsDisplayModel veh in _Vehicles.ToList())
+            {
+                if (!vehicles.Any(v => v.RegistrationNumber == veh.RegistrationNumber))
+                {
+                    VehicleDetailsDisplayModel vehicleToRemove = Vehicles.First(v => v.RegistrationNumber == veh.RegistrationNumber);
+                    Vehicles.Remove(vehicleToRemove);
+                }
+            }
         }
 
         private void VehiclesChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -52,14 +71,18 @@ namespace Millsnet.DvlApp.ViewModels
         public ICommand AddVehicleCommand => new Command(async () =>
         {
             VehicleDetailsDisplayModel vehicle = new VehicleDetailsDisplayModel { RegistrationNumber = "N3WR3G", Model = "New Car" };
-            Vehicles.Add(vehicle);
-            _DataService.Save(Vehicles.Select(v => v.ToVehicleDetails()), nameof(VehicleDetails));
+
+            _EditVehicleViewModel.LoadVehicle(vehicle);
+            await Shell.Current.GoToAsync("EditVehicle");
+            _Vehicles.Add(vehicle);
         });
         public ICommand EditVehicleCommand => new Command<VehicleDetailsDisplayModel>(
             async (VehicleDetailsDisplayModel vehicle) =>
         {
             _EditVehicleViewModel.LoadVehicle(vehicle);
             await Shell.Current.GoToAsync("EditVehicle");
+            
+            
         });
 
         public ICommand RefreshVehiclesCommand => new Command(async () =>
