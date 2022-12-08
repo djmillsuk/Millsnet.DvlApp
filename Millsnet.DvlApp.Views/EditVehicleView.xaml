@@ -102,42 +102,60 @@
                     </Grid>
 
                     <VerticalStackLayout Margin="5" Background="{StaticResource Blue300Brush}" Padding="10">
-                        <Label Text="{Binding Make, StringFormat='Make {0}'}" 
-                               TextColor="{StaticResource Black}"/>
+                        <Label Text="{Binding Make, StringFormat='Make: {0}'}" 
+                               TextColor="{StaticResource Black}"
+                               FontSize="Medium"/>
                         <Label Text="{Binding Colour, StringFormat='Colour: {0}'}"
-                               TextColor="{StaticResource Black}"/>
+                               TextColor="{StaticResource Black}"
+                               FontSize="Medium"/>
                         <Label Text="{Binding EngineCapacity, StringFormat='Engine Capacity: {0}'}"
-                               TextColor="{StaticResource Black}"/>
+                               TextColor="{StaticResource Black}"
+                               FontSize="Medium"/>
                         <Label Text="{Binding FuelType, StringFormat='FuelType: {0}'}"
-                               TextColor="{StaticResource Black}"/>
+                               TextColor="{StaticResource Black}"
+                               FontSize="Medium"/>
                         <Label Text="{Binding ArtEndDate, StringFormat='Art End Date: {0}'}"
-                               TextColor="{StaticResource Black}"/>
+                               TextColor="{StaticResource Black}"
+                               FontSize="Medium"/>
                         <Label Text="{Binding Co2Emissions, StringFormat='Co2 Emissions: {0}'}"
-                               TextColor="{StaticResource Black}"/>
+                               TextColor="{StaticResource Black}"
+                               FontSize="Medium"/>
                         <Label Text="{Binding EuroStatus, StringFormat='Euro Status: {0}'}"
-                               TextColor="{StaticResource Black}"/>
+                               TextColor="{StaticResource Black}"
+                               FontSize="Medium"/>
                         <Label Text="{Binding MarkedForExport, StringFormat='Marked For Export: {0}'}"
-                               TextColor="{StaticResource Black}"/>
+                               TextColor="{StaticResource Black}"
+                               FontSize="Medium"/>
                         <Label Text="{Binding RealDrivingEmissions, StringFormat='Real Driving Emissions: {0}'}"
-                               TextColor="{StaticResource Black}"/>
+                               TextColor="{StaticResource Black}"
+                               FontSize="Medium"/>
                         <Label Text="{Binding RevenueWeight, StringFormat='Revenue Weight: {0}'}"
-                               TextColor="{StaticResource Black}"/>
+                               TextColor="{StaticResource Black}"
+                               FontSize="Medium"/>
                         <Label Text="{Binding MotExpiryDate, StringFormat='MOT Expiry Date: {0}'}"
-                               TextColor="{StaticResource Black}"/>
+                               TextColor="{StaticResource Black}"
+                               FontSize="Medium"/>
                         <Label Text="{Binding MotStatus, StringFormat='MOT Status: {0}'}"
-                               TextColor="{StaticResource Black}"/>
+                               TextColor="{StaticResource Black}"
+                               FontSize="Medium"/>
                         <Label Text="{Binding TaxDueDate, StringFormat='Tax Due Date: {0}'}"
-                               TextColor="{StaticResource Black}"/>
+                               TextColor="{StaticResource Black}"
+                               FontSize="Medium"/>
                         <Label Text="{Binding TypeApproval, StringFormat='Type Approval: {0}'}"
-                               TextColor="{StaticResource Black}"/>
+                               TextColor="{StaticResource Black}"
+                               FontSize="Medium"/>
                         <Label Text="{Binding Wheelplan, StringFormat='Wheelplan: {0}'}"
-                               TextColor="{StaticResource Black}"/>
+                               TextColor="{StaticResource Black}"
+                               FontSize="Medium"/>
                         <Label Text="{Binding YearOfManufacture, StringFormat='Year Of Manufacture: {0}'}"
-                               TextColor="{StaticResource Black}"/>
+                               TextColor="{StaticResource Black}"
+                               FontSize="Medium"/>
                         <Label Text="{Binding MonthOfFirstRegistration, StringFormat='Month Of First Registration: {0}'}"
-                               TextColor="{StaticResource Black}"/>
+                               TextColor="{StaticResource Black}"
+                               FontSize="Medium"/>
                         <Label Text="{Binding DateOfLastV5CIssued, StringFormat='Date Last V5C Issued: {0}'}"
-                               TextColor="{StaticResource Black}"/>
+                               TextColor="{StaticResource Black}"
+                               FontSize="Medium"/>
                     </VerticalStackLayout>
                 </VerticalStackLayout>
             </Grid>
