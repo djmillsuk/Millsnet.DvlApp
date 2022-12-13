@@ -4,9 +4,8 @@ namespace Millsnet.DvlApp.Views;
 
 public partial class EditVehicleView : ContentPage
 {
-	public EditVehicleView(EditVehicleViewModel vm)
+	public EditVehicleView()
 	{
 		InitializeComponent();
-		BindingContext = vm;
 	}
 }

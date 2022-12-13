@@ -28,6 +28,9 @@
 	  <Compile Update="EditVehicleView.xaml.cs">
 	    <DependentUpon>EditVehicleView.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="BlankView.xaml.cs">
+	    <DependentUpon>BlankView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="SettingsView.xaml.cs">
 	    <DependentUpon>SettingsView.xaml</DependentUpon>
 	  </Compile>
@@ -38,6 +41,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="EditVehicleView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="BlankView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="SettingsView.xaml">

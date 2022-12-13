@@ -4,9 +4,8 @@ namespace Millsnet.DvlApp.Views;
 
 public partial class HomeView : ContentPage
 {
-	public HomeView(HomeViewModel vm)
+	public HomeView()
 	{
 		InitializeComponent();
-		BindingContext = vm;
 	}
 }

@@ -17,16 +17,17 @@ namespace Millsnet.DvlApp.ViewModels
         private readonly IDataService _DataService;
         private readonly IDvlaService _DvlaService;
         private readonly IAlertService _AlertService;
-
+        private readonly INavigationService _NavigationService;
         private bool _VehiclesSelected;
         public bool VehiclesSelected { get => _VehiclesSelected; set => SetProperty(ref _VehiclesSelected, value); }
         private ObservableCollection<VehicleDetailsDisplayModel> _Vehicles = new ObservableCollection<VehicleDetailsDisplayModel>();
         public ObservableCollection<VehicleDetailsDisplayModel> Vehicles { get => _Vehicles; set => SetProperty(ref _Vehicles, value); }
 
         public HomeViewModel() { }
-        public HomeViewModel(EditVehicleViewModel editVehicleViewModel, IDataService dataService, IDvlaService dvlaService, IAlertService alertService)
+        public HomeViewModel(EditVehicleViewModel editVehicleViewModel, IDataService dataService, IDvlaService dvlaService, IAlertService alertService, INavigationService navigationService)
         {
             _AlertService = alertService;
+            _NavigationService = navigationService;
             _EditVehicleViewModel = editVehicleViewModel;
             _DataService = dataService;
             _DvlaService = dvlaService;
@@ -34,12 +35,20 @@ namespace Millsnet.DvlApp.ViewModels
             IEnumerable<VehicleDetails> vehicles = _DataService.Load<IEnumerable<VehicleDetails>>(nameof(VehicleDetails))??new List<VehicleDetails>();
             foreach (VehicleDetails vehicle in vehicles) 
             Vehicles.Add(new VehicleDetailsDisplayModel(vehicle));
-            Shell.Current.Navigated += Current_Navigated;
         }
 
-        private void Current_Navigated(object sender, ShellNavigatedEventArgs e)
+        public override Task InitialiseAsync(object data)
         {
-            RefreshVehicles();
+            if (data != null)
+            {
+                if (data is IEnumerable<VehicleDetails>)
+                {
+                    IEnumerable<VehicleDetails> vehicles = data as IEnumerable<VehicleDetails>;
+                    Vehicles = new ObservableCollection<VehicleDetailsDisplayModel>(                        
+                        vehicles.Select(v => new VehicleDetailsDisplayModel(v)));
+                }
+            }
+            return base.InitialiseAsync(data);
         }
 
         private void RefreshVehicles()
@@ -72,17 +81,14 @@ namespace Millsnet.DvlApp.ViewModels
         {
             VehicleDetailsDisplayModel vehicle = new VehicleDetailsDisplayModel { RegistrationNumber = "N3WR3G", Model = "New Car" };
 
-            _EditVehicleViewModel.LoadVehicle(vehicle);
-            await Shell.Current.GoToAsync("EditVehicle");
-            _Vehicles.Add(vehicle);
+            //_EditVehicleViewModel.LoadVehicle(vehicle);
+            await _NavigationService.NavigateAsync<EditVehicleViewModel>(vehicle);
         });
         public ICommand EditVehicleCommand => new Command<VehicleDetailsDisplayModel>(
             async (VehicleDetailsDisplayModel vehicle) =>
         {
-            _EditVehicleViewModel.LoadVehicle(vehicle);
-            await Shell.Current.GoToAsync("EditVehicle");
-            
-            
+            //_EditVehicleViewModel.LoadVehicle(vehicle);
+            await _NavigationService.NavigateAsync<EditVehicleViewModel>(vehicle);
         });
 
         public ICommand RefreshVehiclesCommand => new Command(async () =>

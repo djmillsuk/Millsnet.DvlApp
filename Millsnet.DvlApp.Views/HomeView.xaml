@@ -4,8 +4,11 @@
              x:Class="Millsnet.DvlApp.Views.HomeView"
              xmlns:vm="clr-namespace:Millsnet.DvlApp.ViewModels;assembly=Millsnet.DvlApp.ViewModels"
              x:Name="_this">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsEnabled="false" IsVisible="False"/>
+    </Shell.BackButtonBehavior>
     <Shell.TitleView>
-        <Grid ColumnDefinitions="*,auto" BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill">
+        <Grid ColumnDefinitions="*,auto" BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" Margin="0" x:Name="TitleGrid">
             <Label Text="Home" Style="{StaticResource TitleBarLabelStyle}" BackgroundColor="{StaticResource Primary}"/>
             <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End"  BackgroundColor="{StaticResource Primary}">
                 <Button Text="{StaticResource glyph-refresh}" 

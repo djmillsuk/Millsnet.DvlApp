@@ -2,9 +2,9 @@ using Millsnet.DvlApp.ViewModels;
 
 namespace Millsnet.DvlApp.Views;
 
-public partial class SettingsView : ContentPage
+public partial class BlankView : ContentPage
 {
-	public SettingsView()
+	public BlankView()
 	{
 		InitializeComponent();
 	}

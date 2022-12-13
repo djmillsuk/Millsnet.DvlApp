@@ -9,6 +9,10 @@
             Value="{StaticResource Primary}" />
         <Setter Property="Shell.TabBarTitleColor"
             Value="{StaticResource Black}" />
+        <Setter Property="Shell.TabBarForegroundColor"
+            Value="{StaticResource Black}" />
+        <Setter Property="Shell.TitleColor"
+            Value="{StaticResource Black}" />
         <Setter Property="Shell.TabBarUnselectedColor"
             Value="{StaticResource Gray500}" />
     </Style>

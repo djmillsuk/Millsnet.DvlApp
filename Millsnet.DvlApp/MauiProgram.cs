@@ -44,6 +44,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<Interfaces.IAlertService, Services.AlertService>();
         builder.Services.AddSingleton<Interfaces.IDataService, Services.DataService>();
         builder.Services.AddSingleton<Interfaces.IDvlaService, Services.DvlaService>();
+        builder.Services.AddSingleton<Interfaces.INavigationService, Services.NavigationService>();
 
         return builder;
     }
